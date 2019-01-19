@@ -1,5 +1,7 @@
 <template>
-  <div id="app"><Todos v-bind:todos="todos" /></div>
+  <div id="app">
+    <Todos v-bind:todos="todos"/>
+  </div>
 </template>
 
 <script>
