@@ -1,10 +1,19 @@
 <template>
-  <div class="todos"><h1>Todo</h1></div>
+  <div class="todos"><h1>Todo</h1>
+<div v-for="todo in todos" :key="todo.id">
+      
+      <h1>
+            {{todo.Title}}
+      </h1>
+      
+      </div>  
+  </div>
 </template>
 
 <script>
 export default {
-  name: "Todos"
+  name: "Todos",
+  props: ["todos"]
 };
 </script>
 

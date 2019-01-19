@@ -1,5 +1,5 @@
 <template>
-  <div id="app"><Todos /></div>
+  <div id="app"><Todos v-bind:todos="todos" /></div>
 </template>
 
 <script>
@@ -13,7 +13,7 @@ export default {
   },
   data() {
     return {
-      todo: [
+      todos: [
         {
           id: 1,
           Title: "Read",
