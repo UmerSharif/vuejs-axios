@@ -2,7 +2,7 @@
   <div class="todos">
     <h1>Todo</h1>
     <div v-for="todo in todos" :key="todo.id">
-     <TodoItem v-bind:todo="todo" />
+     <TodoItem v-bind:todo="todo" v-on:del-todonode="sendToApp(todo.id)"/>
     </div>
   </div>
 </template>
@@ -14,7 +14,13 @@ export default {
   components: {
     TodoItem
   },
-  props: ["todos"]
+  props: ["todos"],
+  methods:{
+    sendToApp(Node_ID){
+       this.$emit('del-node', Node_ID)
+      // console.log(this.todo.id)
+    }
+  }
 };
 </script>
 
