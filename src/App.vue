@@ -35,10 +35,9 @@ export default {
     };
   },
 
-  methods:{
-    DeleteNode(id){
-    this.todos = this.todos.filter(todo => todo.id !== id)
-    
+  methods: {
+    DeleteNode(id) {
+      this.todos = this.todos.filter(todo => todo.id !== id);
     }
   }
 };
