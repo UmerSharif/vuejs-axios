@@ -1,10 +1,8 @@
 <template>
   <div class="todos">
-    <h1>Todo</h1>
     <div v-for="todo in todos" :key="todo.id">
       <TodoItem v-bind:todo="todo" v-on:del-todonode="sendToApp(todo.id)"/>
     </div>
-     
   </div>
 </template>
 
@@ -14,8 +12,7 @@ import TodoItem from "./TodoItem";
 export default {
   name: "Todos",
   components: {
-    TodoItem,
-   
+    TodoItem
   },
   props: ["todos"],
   methods: {

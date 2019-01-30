@@ -1,23 +1,23 @@
 <template>
   <div>
-      <input type="text" v-model="addtodo"/> 
-    <button @click="addValue">Add</button>
+    <input type="text" v-model="addtodo">
+    <button @click="addValue">Submit</button>
   </div>
 </template>
 
 <script>
 export default {
   name: "AddTodo",
-  data(){
-      return{
-          addtodo: ''
-      }
+  data() {
+    return {
+      addtodo: ""
+    };
   },
   methods: {
-      addValue(){
-          this.$emit('add-value', this.addtodo)
-          this.addtodo = ''
-      }
+    addValue() {
+      this.$emit("add-value", this.addtodo);
+      this.addtodo = "";
+    }
   }
 };
 </script>
