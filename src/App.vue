@@ -2,7 +2,7 @@
   <div id="app">
     <Header/>
     <Todos v-bind:todos="todos" v-on:del-node="DeleteNode"/>
-    <add-todo v-on:add-value="addData"/>
+    <add-todo v-bind:todosLength="todosLength" v-on:add-value="addData"/>
   </div>
 </template>
 
@@ -45,11 +45,12 @@ export default {
       this.todos = this.todos.filter(todo => todo.id !== id);
     },
     addData(todoVal) {
-      this.todos.push({
-        id: this.todos.length + 1,
-        Title: todoVal,
-        isCompleted: false
-      });
+      this.todos.push(todoVal);
+    }
+  },
+  computed: {
+    todosLength(){
+      return this.todos.length
     }
   }
 };
