@@ -2,18 +2,21 @@
   <div id="app">
     <Header />
     <Todos v-bind:todos="todos" v-on:del-node="DeleteNode"/>
+    <add-todo v-on:add-value="addData" />
   </div>
 </template>
 
 <script>
 import Header from "./components/layout/Header";
 import Todos from "./components/Todos";
+import AddTodo from "./components/AddTodo"
 
 export default {
   name: "App",
   components: {
     Todos,
-    Header
+    Header,
+    AddTodo
   },
   data() {
     return {
@@ -40,6 +43,9 @@ export default {
   methods: {
     DeleteNode(id) {
       this.todos = this.todos.filter(todo => todo.id !== id);
+    },
+    addData(todoVal){
+      this.todos.push({id: this.todos.length + 1, Title: todoVal, isCompleted: false})
     }
   }
 };

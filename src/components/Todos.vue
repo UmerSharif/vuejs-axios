@@ -4,18 +4,18 @@
     <div v-for="todo in todos" :key="todo.id">
       <TodoItem v-bind:todo="todo" v-on:del-todonode="sendToApp(todo.id)"/>
     </div>
-      <AddTodo />
+     
   </div>
 </template>
 
 <script>
 import TodoItem from "./TodoItem";
-import AddTodo from "./AddTodo"
+
 export default {
   name: "Todos",
   components: {
     TodoItem,
-    AddTodo
+   
   },
   props: ["todos"],
   methods: {
