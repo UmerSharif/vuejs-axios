@@ -10,6 +10,7 @@
 import Header from "./components/layout/Header";
 import Todos from "./components/Todos";
 import AddTodo from "./components/AddTodo";
+import axios from "axios"
 
 export default {
   name: "App",
@@ -20,25 +21,11 @@ export default {
   },
   data() {
     return {
-      todos: [
-        {
-          id: 1,
-          Title: "Read",
-          isCompleted: false
-        },
-        {
-          id: 2,
-          Title: "Write",
-          isCompleted: false
-        },
-        {
-          id: 3,
-          Title: "Speak",
-          isCompleted: false
-        }
-      ]
+      todos: []
     };
   },
+
+
 
   methods: {
     DeleteNode(id) {
@@ -48,11 +35,18 @@ export default {
       this.todos.push(todoVal);
     }
   },
+
+    created() {
+    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
+    .then(res => this.todos = res.data)
+    .catch(err => console.log(err))
+  },
   computed: {
-    todosLength(){
-      return this.todos.length
+    todosLength() {
+      return this.todos.length;
     }
   }
+  
 };
 </script>
 

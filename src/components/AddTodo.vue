@@ -19,7 +19,7 @@ export default {
     addValue() {
       const newTodo = {
         id: this.todosLength + 1,
-        Title: this.addtodo,
+        title: this.addtodo,
         isCompleted: false
       };
       this.$emit("add-value", newTodo);

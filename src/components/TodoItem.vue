@@ -1,7 +1,7 @@
 <template>
   <div class="todo-item" :class="{'is-complete':todo.isCompleted}">
     <input type="checkbox" @change="ToggleComplete">
-    {{todo.id}} :{{todo.Title}}
+    {{todo.id}} :{{todo.title}}
     <button @click="sendToParent" class="del">x</button>
   </div>
 </template>
