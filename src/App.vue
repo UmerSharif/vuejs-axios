@@ -10,7 +10,7 @@
 import Header from "./components/layout/Header";
 import Todos from "./components/Todos";
 import AddTodo from "./components/AddTodo";
-import axios from "axios"
+import axios from "axios";
 
 export default {
   name: "App",
@@ -25,28 +25,37 @@ export default {
     };
   },
 
-
-
   methods: {
     DeleteNode(id) {
-      this.todos = this.todos.filter(todo => todo.id !== id);
+      axios
+        .delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+        .then(res => (this.todos = this.todos.filter(todo => todo.id !== id)))
+        .catch(err => console.log(err));
     },
     addData(todoVal) {
-      this.todos.push(todoVal);
+      const { title, isCompleted } = todoVal;
+      axios
+        .post("https://jsonplaceholder.typicode.com/todos", {
+          title,
+          isCompleted
+        })
+        .then(res => (this.todos = [...this.todos, res.data]))
+        .catch(err => console.log(err));
+      // this.todos.push(todoVal);
     }
   },
 
-    created() {
-    axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
-    .then(res => this.todos = res.data)
-    .catch(err => console.log(err))
+  created() {
+    axios
+      .get("https://jsonplaceholder.typicode.com/todos?_limit=5")
+      .then(res => (this.todos = res.data))
+      .catch(err => console.log(err));
   },
   computed: {
     todosLength() {
       return this.todos.length;
     }
   }
-  
 };
 </script>
 
